@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+
+  <definition name="noserch.temp" template="/WEB-INF/page/temp/noserchTemp.jsp">
+      <put-attribute name="title"  value="大猿商城-综合网购首选-正品低价、品质保障、配送及时、轻松购物！"/>
+      <put-attribute name="header" value="/WEB-INF/page/common/headerNoSerch.jsp"/>
+      <put-attribute name="footer"   value="/WEB-INF/page/common/footer.jsp"/>
+  </definition>
+  
+   <definition name="serch.temp" template="/WEB-INF/page/temp/serchTemp.jsp">
+      <put-attribute name="title"  value="大猿商城-综合网购首选-正品低价、品质保障、配送及时、轻松购物！"/>
+      <put-attribute name="header" value="/WEB-INF/page/common/header.jsp"/>
+      <put-attribute name="footer"   value="/WEB-INF/page/common/footer.jsp"/>
+  </definition>
+
+  <definition name="home.page" extends="serch.temp">
+    <put-attribute name="body" value="/WEB-INF/page/home.jsp"/>
+  </definition>
+  
+  <definition name="order.temp" template="/WEB-INF/page/temp/orderTemp.jsp">
+      <put-attribute name="title"  value="大猿商城-综合网购首选-正品低价、品质保障、配送及时、轻松购物！"/>
+      <put-attribute name="header" value="/WEB-INF/page/common/headerOrder.jsp"/>
+      <put-attribute name="footer"   value="/WEB-INF/page/common/footer.jsp"/>
+  </definition>
+  
+  <definition name="goodDetail.page" extends="serch.temp">
+    <put-attribute name="body" value="/WEB-INF/page/goodDetail.jsp"/>
+  </definition>
+  
+  <definition name="login.page" extends="noserch.temp">
+    <put-attribute name="body" value="/login.jsp"/>
+  </definition>
+  
+  <definition name="regist.page" extends="noserch.temp">
+    <put-attribute name="body" value="/register.jsp"/>
+  </definition>
+  
+  <definition name="order.page" extends="order.temp">
+    <put-attribute name="body" value="/WEB-INF/page/order.jsp"/>
+  </definition>
+
+</tiles-definitions>

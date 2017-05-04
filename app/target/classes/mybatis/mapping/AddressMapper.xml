@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dayuanit.dao.AddressDao">
+
+	<resultMap id="addressResultMap" type="address">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id"/>
+		<result property="provinceCode" column="province_code"/>
+		<result property="cityCode" column="city_code"/>
+		<result property="areaCode" column="area_code"/>
+		<result property="detail" column="detail"/>
+		<result property="provinceName" column="province_name"/>
+		<result property="cityName" column="city_name"/>
+		<result property="areaName" column="area_name"/>
+		<result property="realName" column="real_name"/>
+		<result property="phone" column="phone"/>
+		<result property="defaultFlag" column="default_flag"/>
+		<result property="status" column="status"/>
+	</resultMap>
+	
+	<select id="listProvince" resultType="HashMap">
+		select code, name from mall_province;
+	</select>
+	
+	<select id="listCity" parameterType="string" resultType="HashMap">
+		select code, name from mall_city where provincecode=#{provincecode};
+	</select>
+	
+	<select id="listArea" parameterType="string" resultType="HashMap">
+		select code, name from mall_area where citycode=#{cityCode};
+	</select>
+	
+	<insert id="saveAddress" parameterType="address" useGeneratedKeys="true" keyProperty="id" >
+		insert into mall_address(user_id, province_code, city_code, area_code, detail, province_name, city_name, area_name, real_name,phone,default_flag, status) 
+		values(#{userId},#{provinceCode},#{cityCode},#{areaCode},#{detail},#{provinceName},#{cityName},#{areaName},#{realName},#{phone},#{defaultFlag},#{status});
+	</insert>
+	
+	<update id="modifyDefault" parameterType="HashMap">
+		update mall_address set default_flag=#{defaultFlag} where id=#{id};
+	</update>
+	
+	<select id="getAddressByDefaultFlag" parameterType="HashMap" resultMap="addressResultMap">
+		select id, user_id, province_code, city_code, area_code, detail, province_name, city_name, area_name, real_name,phone,default_flag, status from mall_address 
+		where user_id=#{userId} and default_flag=#{defaultFlag};
+	</select>
+	
+	<select id="getProvince" parameterType="String" resultType="HashMap">
+		select id, code, name from mall_province where code=#{provinceCode};
+	</select>
+	
+	<select id="getCity" parameterType="String" resultType="HashMap">
+		select id, code, name, provincecode from mall_city where code=#{cityCode};
+	</select>
+	
+	<select id="getArea" parameterType="String" resultType="HashMap">
+		select id, code, name, citycode from mall_area where code=#{areaCode};
+	</select>
+	
+	
+</mapper>

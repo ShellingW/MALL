@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dayuanit.dao.OrderDao">
+
+	<resultMap id="orderResultMap" type="order">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id"/>
+		<result property="goodId" column="good_id"/>
+		<result property="num" column="num"/>
+		<result property="status" column="status"/>
+		<result property="amount" column="amount"/>
+		<result property="unitPrice" column="unit_price"/>
+		<result property="deadTime" column="dead_time"/>
+		<result property="createTime" column="create_time"/>
+		<result property="modifyTime" column="modify_time"/>
+	</resultMap>
+	
+	<insert id="addOrder" parameterType="order" useGeneratedKeys="true" keyProperty="id" >
+		insert into mall_custom_order(user_id, good_id, num, status, amount, unit_price,dead_time, create_time, modify_time) 
+		values(#{userId},#{goodId},#{num},#{status},#{amount},#{unitPrice},#{deadTime},now(),now());
+	</insert>
+	
+	
+</mapper>

@@ -1,0 +1,13 @@
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.dayuanit.domain.User" alias="user"/>
+		<typeAlias type="com.dayuanit.domain.Good" alias="good"/>
+		<typeAlias type="com.dayuanit.domain.Order" alias="order"/>
+		<typeAlias type="com.dayuanit.domain.Address" alias="address"/>
+	</typeAliases>
+	
+</configuration>
